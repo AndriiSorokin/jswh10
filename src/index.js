@@ -18,13 +18,21 @@ console.log(markup);
 
 listItem.insertAdjacentHTML('beforeend', markup)
 
-const themeSwitch = checkbox.addEventListener('change', () => {
+
+
+checkbox.addEventListener('change', () => {
   if (checkbox.checked) {
+    localStorage.setItem('Theme', " ")
     body.classList.add(Theme.DARK)
-    localStorage.setItem('Theme', DARK)
+    body.classList.remove(Theme.LIGHT);
   } else {
+    body.classList.add(Theme.LIGHT);
     body.classList.remove(Theme.DARK)
     localStorage.removeItem('Theme')
   }
 })
 
+ if (localStorage.getItem("Theme")) {
+  body.classList.add(Theme.DARK);
+  checkbox.checked = true;
+}
